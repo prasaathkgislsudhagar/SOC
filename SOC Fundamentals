@@ -1,0 +1,94 @@
+🛡️ SOC Fundamentals 
+
+1. SOC
+
+Security Operations Center** monitors, detects, investigates, and responds to cybersecurity threats.
+
+2. SOC Analyst Tiers
+
+* **Tier 1:** Monitor alerts → perform initial triage → escalate.
+* **Tier 2:** Deep investigation → incident response → containment.
+* **Tier 3:** Advanced investigation → threat hunting → forensics/detection engineering.
+
+### 3. Incident Response Lifecycle
+
+**Preparation → Detection & Analysis → Containment → Eradication → Recovery → Lessons Learned**
+
+### 4. Alert Triage
+
+Quickly examine an alert and determine:
+**Is it legitimate, suspicious, or malicious?**
+
+### 5. False Positive
+
+A security alert that looks suspicious but is actually **legitimate activity**.
+
+Example: An employee enters the wrong password 20 times → brute-force alert → legitimate user → **False Positive**.
+
+---
+
+## 🔄 SOC Investigation Flow
+
+```text
+              ┌─────────────────────┐
+              │    Security Event   │
+              └──────────┬──────────┘
+                         ↓
+              ┌─────────────────────┐
+              │    SIEM / EDR       │
+              │   Generates Alert   │
+              └──────────┬──────────┘
+                         ↓
+              ┌─────────────────────┐
+              │   TIER 1 ANALYST    │
+              │    Alert Triage     │
+              └──────────┬──────────┘
+                         ↓
+                 ┌───────────────┐
+                 │ Is it genuine?│
+                 └───────┬───────┘
+                    Yes  │  No
+                         │
+            ┌────────────┘ └────────────┐
+            ↓                           ↓
+   ┌────────────────┐          ┌────────────────┐
+   │   Suspicious   │          │ False Positive │
+   │ / Malicious    │          │     → Close    │
+   └───────┬────────┘          └────────────────┘
+           ↓
+   ┌────────────────────┐
+   │   TIER 2 ANALYST   │
+   │ Deep Investigation │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │ Incident Confirmed │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │   TIER 3 / IR Team  │
+   │ Advanced Response  │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │     Containment    │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │     Eradication    │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │      Recovery      │
+   └─────────┬──────────┘
+             ↓
+   ┌────────────────────┐
+   │  Lessons Learned   │
+   └────────────────────┘
+```
+
+### 🧠 Remember this
+
+**Alert → Triage → Investigate → Confirm → Contain → Eradicate → Recover → Learn**
+
+That's the basic SOC workflow you should remember before moving into **SIEM, log analysis, detection rules, MITRE ATT&CK, threat hunting, and incident investigation**.

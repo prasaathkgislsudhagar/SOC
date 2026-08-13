@@ -1,0 +1,156 @@
+Windows Event IDs — SOC Analysis
+1. Event ID 4624 — Successful Logon
+
+Meaning: A user/account successfully logged into Windows.
+
+Your lab shows:
+
+Log: Security
+Event ID: 4624
+Level: Information
+Task Category: Logon
+Keywords: Audit Success
+Description: An account was successfully logged on.
+
+SOC analyst thinking:
+
+"Who logged in? When? Was this login expected?"
+
+A 4624 event by itself is not an attack. The analyst checks the surrounding information and other events to determine whether the login is legitimate.
+
+Remember:
+
+4624 = SUCCESSFUL LOGIN ✅
+2. Event ID 4625 — Failed Logon
+
+Meaning: A logon attempt failed.
+
+SOC analyst thinking:
+
+"Why did the login fail? Is this a normal wrong password or repeated suspicious activity?"
+
+For example:
+
+4625
+4625
+4625
+4625
+4624
+
+A SOC analyst would investigate this pattern because several failed attempts are followed by a successful login.
+
+Remember:
+
+4625 = FAILED LOGIN ❌
+
+Important: Your provided lab does not contain a detailed 4625 example, so this interpretation is not directly demonstrated by the file.
+
+3. Event ID 4688 — New Process Created
+
+Meaning: A new process/program was started.
+
+SOC analyst thinking:
+
+"What process started? Who started it? When did it start? Is the process expected?"
+
+This can help an analyst investigate suspicious program execution.
+
+Example:
+
+4688 → powershell.exe started
+
+The analyst would investigate the process and its surrounding activity.
+
+Remember:
+
+4688 = NEW PROCESS ▶️
+
+Note: Your lab does not demonstrate Event ID 4688 specifically.
+
+4. Event ID 4720 — User Account Created
+
+Meaning: A new Windows user account was created.
+
+Your lab specifically searches the Security log for 4720. It found 0 matching events. The lab states that this means no corresponding user-account creation event was available in the Security log; it does not mean Event Viewer has an error.
+
+SOC analyst thinking:
+
+"Was this account creation authorized?"
+
+For example:
+
+4720 → New user created
+
+If an unexpected account appears, the analyst should investigate who created it and why.
+
+Remember:
+
+4720 = USER ACCOUNT CREATED 👤
+5. Event ID 4728 — Added to Global Security Group
+
+Meaning: A member was added to a security-enabled global group.
+
+SOC analyst thinking:
+
+"Which account was added? Which group? Who made the change? Was it authorized?"
+
+This is important when group membership affects access or privileges.
+
+Remember:
+
+4728 = MEMBER ADDED TO GLOBAL SECURITY GROUP ➕
+
+Note: This Event ID is not demonstrated in your provided lab, so treat this as study knowledge rather than something shown by your experiment.
+
+6. Event ID 4732 — Added to Local Security Group
+
+Meaning: A member was added to a security-enabled local group.
+
+SOC analyst thinking:
+
+"Who was added? Which local group? Who performed the change?"
+
+Unexpected group membership changes can be important during a security investigation.
+
+Remember:
+
+4732 = MEMBER ADDED TO LOCAL SECURITY GROUP ➕
+
+Again, your lab does not contain a 4732 example.
+
+7. Event ID 1102 — Security Log Cleared
+
+Meaning: The Windows Security audit log was cleared.
+
+SOC analyst thinking:
+
+"Why was the Security log cleared, and who cleared it?"
+
+This is important because security logs contain evidence that analysts may need during an investigation.
+
+Remember:
+
+1102 = SECURITY LOG CLEARED 🗑️
+
+Your lab does not demonstrate Event ID 1102 specifically.
+
+🧠 SOC Analyst Cheat Sheet
+Event ID	What happened?	SOC analyst asks
+4624	Successful logon	Who logged in?
+4625	Failed logon	Who failed to log in?
+4688	New process created	What program started?
+4720	User account created	Who created the account?
+4728	Added to global security group	Who was added to the group?
+4732	Added to local security group	Who was added to the group?
+1102	Security log cleared	Who cleared the log and why?
+⭐ How to think like a SOC analyst
+
+Don't say:
+
+"4624 means attack."
+
+Instead say:
+
+"4624 is evidence of a successful logon. I need to investigate the user, time, source, and surrounding events to determine whether the activity is legitimate or suspicious."
+
+That's the key SOC mindset.
